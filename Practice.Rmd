@@ -27,3 +27,16 @@ p
 p+geom_boxplot(data = p$data, aes(x = SampleType, y = value), alpha = 0.2, fill = "steelblue")
 ```
 
+```{r tree}
+GP_chlam = subset_taxa(GlobalPatterns, Phylum == "Chlamydiae")
+plot_tree(GP_chlam, color = "SampleType", shape = "Family", label.tips = "Genus", 
+    size = "abundance", plot.margin = 0.5, ladderize = TRUE)
+```
+
+```{r heatmap}
+GP_bac <- subset_taxa(GlobalPatterns, Kingdom == "Bacteria")
+GP_bac <- prune_taxa(names(sort(taxa_sums(GP_bac),TRUE)[1:500]), GP_bac)
+plot_heatmap(GP_bac, sample.label = "SampleType")
+```
+
+
