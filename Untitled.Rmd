@@ -12,6 +12,22 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(phyloseq)
 ```
+
+```{r}
+dataset = "~/Desktop/Lab/GlobalPatterns.RData"
+```
+
+```{r}
+GlobalPatterns <- load(dataset)
+```
+
+```{r}
+data(GlobalPatterns)
+plot_richness(GlobalPatterns, x="SampleType", measures=c("Observed", "Chao1", "Shannon"))
+```
+
+
+
 ```{r}
 otumat = matrix(sample(1:100, 100, replace = TRUE), nrow = 10, ncol = 10)
 rownames(otumat) <- paste0("OTU", 1:nrow(otumat))
