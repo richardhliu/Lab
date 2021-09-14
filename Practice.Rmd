@@ -1,0 +1,29 @@
+---
+title: "Practice"
+author: "Richard Liu"
+date: "9/14/2021"
+output: html_document
+---
+```{r packages, message=FALSE}
+library(tidyverse)
+library( phyloseq)
+```
+
+```{r load-data, message=FALSE}
+GlobalPatterns = "~/Desktop/Lab/GlobalPatterns.RData"
+```
+
+```{r first-plot}
+data(GlobalPatterns)
+plot_richness(GlobalPatterns, x="SampleType", measures=c("Observed", "Chao1", "Shannon"))
+```
+
+```{r second plot}
+p = (plot_richness(GlobalPatterns, x = "SampleType", measures = c("ACE", "Shannon", "Simpson")))
+p
+```
+
+```{r second-geomplot}
+p+geom_boxplot(data = p$data, aes(x = SampleType, y = value), alpha = 0.2, fill = "steelblue")
+```
+
